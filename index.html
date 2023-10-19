@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive-navigation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h4>ナビゲーションバー</h4>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">ホーム</a></li>
+            <li><a href="#">本サイトについて</a></li>
+            <li><a href="#">ブログ</a></li>
+            <li><a href="#">オンライン相談</a></li>
+        </ul>
+
+        <div class="burger"><!-- すげぇ！ 自作ハンバーガーメニュー！-->
+            <div class="line1"></div><!-- これを回転させるなんて、創造的だぁ！-->
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <script>
+        const $burger = document.querySelector('.burger')
+        const $nav = document.querySelector('.nav-links')
+        const $navLinks = document.querySelectorAll('.nav-links li')
+        // へー。querySelectorのクラスの指定ってpathを記述することもできるのか。
+        $burger.onclick = function(){
+            if($nav.classList.contains('nav-active')){
+                $nav.classList.remove('nav-active')
+                $burger.classList.remove('toggle')
+                $navLinks.forEach((link, index)=>{
+                    link.style.animation = `navLinksFade 0.5s ease ${index/7}s forwards normal`
+                })
+            }else{
+                $nav.classList.add('nav-active')
+                $burger.classList.add('toggle')
+                $navLinks.forEach((link, index)=>{
+                    link.style.animation = `navLinksAppear 0.5s ease ${index/7 +0.4}s forwards normal`
+                })
+            }
+        }
+    </script>
+
+</body>
+</html>

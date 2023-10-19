@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>responsive-website</title>
+    <link rel="stylesheet" href="mycode_responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <main class="first-display">
+
+        <!-- checkbox section -->
+        <input type="checkbox" id="bool">
+        <label for="bool">
+            <i class="fa-solid fa-bars" id="HBmenu"></i>
+            <i class="fa-solid fa-xmark" id="cross"></i>
+        </label>
+
+        <!-- navigation section -->
+        <header>
+            <p>ナビゲーションバー</p>
+            <ul class="navigation">
+                <li><a href="#">ホーム</a></li>
+                <li><a href="#">本サイトについて</a></li>
+                <li><a href="#">ブログ</a></li>
+                <li><a href="#">オンライン相談</a></li>
+            </ul>
+        </header>
+
+        <!-- display section -->
+        <div class="display">
+
+            <section>
+                <ul class="main-contents">
+                    <li>contents here</li>
+                    <li>contents here</li>
+                    <li>contents here</li>
+                </ul>
+            </section>
+        </div>
+
+    </main>
+
+
+    <script>
+        /*
+        const $input = document.createElement('input')
+        const $label = document.createElement('label')
+        $input.setAttribute('type', 'checkbox')
+        $label.setAttribute('for', 'bool')
+        $input.id = 'bool'
+        */
+        const $ul = document.querySelector('ul')
+
+        console.log($ul.getBoundingClientRect())
+    </script>
+</body>
+</html>

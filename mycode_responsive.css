@@ -1,0 +1,138 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+.first-display {
+    width: 100%;
+    height: 100vh;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    background-color: blue;
+    align-items: center;
+}
+header h2 {
+    margin-left: 60px;
+}
+header ul {
+    display: flex;
+    justify-content: center;
+}
+header ul li {
+    padding: 30px 30px;
+}
+header ul li a {
+    color: white;
+}
+
+/* レスポンシブ対応のcss 既存のcssに上書きされます。*/
+@media screen and (max-width:480px) {
+    .display { /* 横スクロールを禁止したかったので、メインディスプレイを定義しました。*/
+        /*width: 100vw;*/
+        height: 100vh;
+        background-image: url(./img/cosmo02.jpeg);
+        background-size: cover;
+        background-position: center;
+        transition: 1s;
+        position: relative; /* 子要素に position absolute を指定している時は、*/
+        overflow: hidden; /* 親要素に position relative を指定しないと、overflow hidden 効かない */
+        /* なんて馬鹿な話だ。僕が、overflow ではまった忘備録を描くよ。*/
+        /* overflow hidden は、付与させるセレクタのwidth heightで決定されるのに。*/
+    }
+    input {
+        display: none;
+    }
+    label #HBmenu,
+    label #cross {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 2;
+    }
+    label #HBmenu {
+        opacity: 1;
+    }
+    label #cross {
+        opacity: 0;
+    }
+    #bool:checked ~ label #HBmenu { /* セレクタの指定は、フルパス指定しようね。*/
+        opacity: 0;
+    }
+    #bool:checked ~ label #cross {
+        opacity: 1;
+    }
+    #bool:checked ~ .display {
+        margin-right: 139px;
+        transition: 1s;
+    }
+    #bool:checked ~ header .navigation {
+        right: 0;
+        transition: 1s;
+    }
+    header {
+        position: absolute;
+        z-index: 1;
+        justify-content: flex-start;
+    }
+    header p {
+        width: 100vw;
+        padding: 10px;
+    }
+    header ul {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: -139px;
+        height: 100vh;
+        background-color: gray;
+        transition: 1s;
+    }
+    header ul li a {
+        font-size: 0.5rem;
+    }
+
+    .display section {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        place-items: center;
+    }
+    .display section ul {
+        background-color: rgb(148, 144, 144, 0.5);
+        border-radius: 25%;
+    }
+    .display section ul li {
+        padding: 10px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        animation: change-color 2s linear 0s infinite normal;
+    }
+    .display section ul li:nth-child(2) {
+        animation: change-color 2s linear 0.1s infinite normal;
+    }
+    .display section ul li:nth-child(3) {
+        animation: change-color 2s linear 0.2s infinite normal;
+    }
+    @keyframes change-color {
+        0% {
+            color: #eff7ff;
+        }
+        25% {
+            color: #e8db7d;
+        }
+        50% {
+            color: #558c8c;
+        }
+        75% {
+            color: #82204a;
+        }
+        100% {
+            color: #eff7ff;
+        }
+    }
+}

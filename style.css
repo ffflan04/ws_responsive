@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; /* space-around を使って、スマートにレスポンシブデザインを実現してるよ。凄い。*/
+    min-height: 8vh;
+    background-color: #364e8b;
+}
+.logo {
+    color: white;
+    font-size: 22px;
+}
+.nav-links {
+    display: flex;
+    justify-content: space-around; /* スペースを均等にあけますね。*/
+    width: 38%;
+}
+.nav-links li {
+    list-style: none;
+}
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.burger { /* レスポンシブデザインのための素材ですが、やはりdisplay none ですよねー。*/
+    display: none;
+    cursor: pointer;
+}
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+}
+.nav-active {
+    transform: translateX(0%) !important; /* うぉ。初めて使ったな。important */
+    /* あぁなるほどね。importantは、複数のクラスに所属してる時などの、
+    同一のプロパティが競合したときに活躍します。*/
+    transition: all 0.5s ease-in-out !important; 
+}
+@keyframes navLinksAppear {
+    0% {
+        opacity: 0;
+        transform: translateX(50px); /* はいはい。要素の移動関係は全部、transformっすよね。*/
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes navLinksFade {
+    0% {
+        opacity: 1;
+        transform: translateX(0); 
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .nav-links {
+        width: 55%;
+    }
+}
+@media screen and (max-width: 768px){
+    body {
+        /* 横スライドだけを無くしたいなら、 width100%の要素にoverflowつけちゃえばいい。*/
+        overflow-x: hidden;
+    }
+    .nav-links {
+        position: absolute;
+        top: 8vh;
+        right: 0;
+        width: 50%;
+        height: 92vh;
+        background-color: #364e8b;
+        flex-direction: column; /* flexって縦並びにもできるんやね。*/
+        align-items: center; /* flex-directionがあると、text-align centerと同じ効果 */
+        transform: translateX(100%); /* なるほどね。transformで画面外に設置すると。*/
+        /* けど、個人的には、transformは、あまり切りたくないんだなぁ。*/
+        transition: all 0.5s ease-in-out 0.5s;
+    }
+    .nav-links li {
+        opacity: 0;
+    }
+    .burger {
+        display: block;
+    }
+}
+.toggle .line1 { /* このline兄弟達の親クラスに、toggleクラスをつけますのでokです。*/
+    /* あぁー。もうだめだ。transformで、うまくバッテン作れません！！ */
+    /*
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+    opacity: 0;
+}
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, 6px); 
+}
+*/
